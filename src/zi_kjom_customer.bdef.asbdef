@@ -1,0 +1,127 @@
+managed implementation in class zbp_i_kjom_customer unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_KJOM_Customer alias Customer
+persistent table zkj_om_customer
+draft table zkj_om_cust_d
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( global )
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed )
+    CustomerUUID;
+
+  field ( readonly : update )
+    Customer;
+
+  field ( readonly )
+    Status,
+    StatusText,
+    StatusCriticality,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    LocalLastChangedBy,
+    LocalLastChangedAt;
+
+  field ( mandatory : create )
+    Customer;
+
+  field ( mandatory )
+    CustomerName,
+    Country,
+    SalesOrganization,
+    DistributionChannel,
+    Division,
+    Currency;
+
+  determination setInitialStatus on modify
+  {
+    create;
+  }
+
+  determination normalizeCustomerData on modify
+  {
+    field CustomerName, EmailAddress;
+  }
+
+  validation validateCustomer on save
+  {
+    create;
+    update;
+    field Customer;
+  }
+
+  validation validateCustomerName on save
+  {
+    create;
+    update;
+    field CustomerName;
+  }
+
+  validation validateCreditLimit on save
+  {
+    create;
+    update;
+    field CreditLimit, Currency;
+  }
+
+  validation validateEmailAddress on save
+  {
+    create;
+    update;
+    field EmailAddress;
+  }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation validateCustomer;
+    validation validateCustomerName;
+    validation validateCreditLimit;
+    validation validateEmailAddress;
+  }
+
+  mapping for zkj_om_customer
+  {
+    CustomerUUID          = customer_uuid;
+    Customer              = customer_id;
+    CustomerName          = customer_name;
+    CustomerGroup         = customer_group;
+
+    Street                = street;
+    PostalCode            = postal_code;
+    City                  = city;
+    Country               = country;
+    Region                = region;
+
+    EmailAddress          = email_address;
+    PhoneNumber           = phone_number;
+
+    SalesOrganization     = sales_organization;
+    DistributionChannel   = distribution_channel;
+    Division              = division;
+
+    Currency              = currency_code;
+    CreditLimit           = credit_limit;
+    Status                = status;
+
+    CreatedBy             = created_by;
+    CreatedAt             = created_at;
+    LastChangedBy         = last_changed_by;
+    LastChangedAt         = last_changed_at;
+    LocalLastChangedBy    = local_last_changed_by;
+    LocalLastChangedAt    = local_last_changed_at;
+  }
+}

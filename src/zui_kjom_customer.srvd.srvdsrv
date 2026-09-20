@@ -1,0 +1,5 @@
+@EndUserText.label: 'Customer Management UI Service'
+define service ZUI_KJOM_CUSTOMER {
+  expose ZC_KJOM_Customer   as Customers;
+  expose ZI_KJOM_CustomerVH as CustomerValueHelp;
+}

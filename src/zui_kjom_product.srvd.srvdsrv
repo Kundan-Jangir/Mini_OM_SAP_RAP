@@ -1,0 +1,5 @@
+@EndUserText.label: 'Product Management UI Service'
+define service ZUI_KJOM_PRODUCT {
+  expose ZC_KJOM_Product   as Products;
+  expose ZI_KJOM_ProductVH as ProductValueHelp;
+}

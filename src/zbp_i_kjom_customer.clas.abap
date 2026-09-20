@@ -1,0 +1,5 @@
+CLASS zbp_i_kjom_customer DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_kjom_customer.
+ENDCLASS.
+
+CLASS zbp_i_kjom_customer IMPLEMENTATION.
+ENDCLASS.

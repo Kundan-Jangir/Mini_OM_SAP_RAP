@@ -1,0 +1,314 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Sales Order Item',
+    typeNamePlural: 'Sales Order Items',
+    title: {
+      type: #STANDARD,
+      value: 'SalesOrderItem'
+    },
+    description: {
+      type: #STANDARD,
+      value: 'ProductDescription'
+    }
+  }
+}
+
+annotate entity ZC_KJOM_SalesOrderItem with
+{
+  @UI.facet: [
+    {
+      id: 'ItemInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Item',
+      label: 'Item Information',
+      position: 10
+    },
+    {
+      id: 'ItemAmounts',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Amounts',
+      label: 'Pricing',
+      position: 20
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      {
+        position: 10,
+        importance: #HIGH,
+        label: 'Item'
+      }
+    ],
+    identification: [
+      {
+        position: 10,
+        label: 'Item'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 10,
+        label: 'Item'
+      }
+    ]
+  }
+  SalesOrderItem;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 20,
+        importance: #HIGH,
+        label: 'Product'
+      }
+    ],
+    identification: [
+      {
+        position: 20,
+        label: 'Product'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 20,
+        label: 'Product'
+      }
+    ]
+  }
+  ProductUUID;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 30,
+        label: 'Description'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 30,
+        label: 'Description'
+      }
+    ]
+  }
+  ProductDescription;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 40,
+        importance: #HIGH,
+        label: 'Quantity'
+      }
+    ],
+    identification: [
+      {
+        position: 40,
+        label: 'Quantity'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 40,
+        label: 'Quantity'
+      }
+    ]
+  }
+  OrderQuantity;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 50,
+        label: 'Unit'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 50,
+        label: 'Unit'
+      }
+    ]
+  }
+  OrderQuantityUnit;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 60,
+        label: 'Plant'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Item',
+        position: 60,
+        label: 'Plant'
+      }
+    ]
+  }
+  Plant;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 70,
+        label: 'Unit Price'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 10,
+        label: 'Unit Price'
+      }
+    ]
+  }
+  UnitPrice;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 80,
+        label: 'Discount %'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 20,
+        label: 'Discount Percentage'
+      }
+    ]
+  }
+  DiscountPercentage;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 30,
+        label: 'Gross Amount'
+      }
+    ]
+  }
+  GrossAmount;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 40,
+        label: 'Discount Amount'
+      }
+    ]
+  }
+  DiscountAmount;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 90,
+        importance: #HIGH,
+        label: 'Net Amount'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 50,
+        label: 'Net Amount'
+      }
+    ]
+  }
+  NetAmount;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 60,
+        label: 'Tax Percentage'
+      }
+    ]
+  }
+  TaxPercentage;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 70,
+        label: 'Tax Amount'
+      }
+    ]
+  }
+  TaxAmount;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 100,
+        importance: #HIGH,
+        label: 'Total Amount'
+      }
+    ],
+    identification: [
+      {
+        position: 100,
+        label: 'Total Amount'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 80,
+        label: 'Total Amount'
+      }
+    ]
+  }
+  TotalAmount;
+
+  @UI.hidden: true
+  SalesOrderItemUUID;
+
+  @UI.hidden: true
+  SalesOrderUUID;
+
+  @UI.hidden: true
+  SalesOrder;
+
+  @UI.hidden: true
+  TransactionCurrency;
+
+  @UI.hidden: true
+  ItemStatus;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

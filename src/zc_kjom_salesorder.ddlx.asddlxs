@@ -1,0 +1,450 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Sales Order',
+    typeNamePlural: 'Sales Orders',
+    title: {
+      type: #STANDARD,
+      value: 'SalesOrder'
+    },
+    description: {
+      type: #STANDARD,
+      value: 'CustomerReference'
+    },
+    typeImageUrl: 'sap-icon://sales-order'
+  },
+  presentationVariant: [
+    {
+      sortOrder: [
+        {
+          by: 'OrderDate',
+          direction: #DESC
+        }
+      ],
+      visualizations: [
+        {
+          type: #AS_LINEITEM
+        }
+      ]
+    }
+  ]
+}
+
+annotate entity ZC_KJOM_SalesOrder with
+{
+  @UI.facet: [
+    {
+      id: 'HeaderTotal',
+      purpose: #HEADER,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'TotalAmount',
+      label: 'Total Amount',
+      position: 10
+    },
+    {
+      id: 'GeneralInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'General',
+      label: 'General Information',
+      position: 10
+    },
+    {
+      id: 'SalesAreaInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'SalesArea',
+      label: 'Sales Area',
+      position: 20
+    },
+    {
+      id: 'DatesInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Dates',
+      label: 'Dates',
+      position: 30
+    },
+    {
+      id: 'Items',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_Items',
+      label: 'Sales Order Items',
+      position: 40
+    },
+    {
+      id: 'AmountsInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Amounts',
+      label: 'Amounts',
+      position: 50
+    },
+    {
+      id: 'AdministrationInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Administration',
+      label: 'Administrative Information',
+      position: 60
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      {
+        position: 10,
+        importance: #HIGH,
+        label: 'Sales Order'
+      }
+    ],
+    identification: [
+      {
+        position: 10,
+        label: 'Sales Order'
+      }
+    ],
+    selectionField: [
+      {
+        position: 10
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 10,
+        label: 'Sales Order'
+      }
+    ]
+  }
+  SalesOrder;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 20,
+        label: 'Order Type'
+      }
+    ],
+    selectionField: [
+      {
+        position: 20
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 20,
+        label: 'Order Type'
+      }
+    ]
+  }
+  SalesOrderType;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 30,
+        importance: #HIGH,
+        label: 'Customer'
+      }
+    ],
+    identification: [
+      {
+        position: 30,
+        label: 'Customer'
+      }
+    ],
+    selectionField: [
+      {
+        position: 30
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 30,
+        label: 'Customer'
+      }
+    ]
+  }
+  CustomerUUID;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 40,
+        label: 'Customer Reference'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 40,
+        label: 'Customer Reference'
+      }
+    ]
+  }
+  CustomerReference;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 10,
+        label: 'Sales Organization'
+      }
+    ],
+    selectionField: [
+      {
+        position: 40
+      }
+    ]
+  }
+  SalesOrganization;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 20,
+        label: 'Distribution Channel'
+      }
+    ]
+  }
+  DistributionChannel;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 30,
+        label: 'Division'
+      }
+    ]
+  }
+  Division;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 50,
+        label: 'Order Date'
+      }
+    ],
+    identification: [
+      {
+        position: 50,
+        label: 'Order Date'
+      }
+    ],
+    selectionField: [
+      {
+        position: 50
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Dates',
+        position: 10,
+        label: 'Order Date'
+      }
+    ]
+  }
+  OrderDate;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 60,
+        label: 'Requested Delivery Date'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Dates',
+        position: 20,
+        label: 'Requested Delivery Date'
+      }
+    ]
+  }
+  RequestedDeliveryDate;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 10,
+        label: 'Transaction Currency'
+      }
+    ]
+  }
+  TransactionCurrency;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 20,
+        label: 'Gross Amount'
+      }
+    ]
+  }
+  GrossAmount;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 30,
+        label: 'Discount Amount'
+      }
+    ]
+  }
+  DiscountAmount;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 70,
+        label: 'Net Amount'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 40,
+        label: 'Net Amount'
+      }
+    ]
+  }
+  NetAmount;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 50,
+        label: 'Tax Amount'
+      }
+    ]
+  }
+  TaxAmount;
+
+  @UI.dataPoint: {
+    qualifier: 'TotalAmount',
+    title: 'Total Amount'
+  }
+  @UI: {
+    lineItem: [
+      {
+        position: 80,
+        importance: #HIGH,
+        label: 'Total Amount'
+      }
+    ],
+    identification: [
+      {
+        position: 80,
+        label: 'Total Amount'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Amounts',
+        position: 60,
+        label: 'Total Amount'
+      }
+    ]
+  }
+  TotalAmount;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 90,
+        importance: #HIGH,
+        label: 'Status'
+      }
+    ],
+    selectionField: [
+      {
+        position: 60
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 50,
+        label: 'Status'
+      }
+    ]
+  }
+  OverallStatus;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 60,
+        label: 'Rejection Reason'
+      }
+    ]
+  }
+  RejectionReason;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 10,
+        label: 'Created By'
+      }
+    ]
+  }
+  CreatedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 20,
+        label: 'Created At'
+      }
+    ]
+  }
+  CreatedAt;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 30,
+        label: 'Last Changed By'
+      }
+    ]
+  }
+  LastChangedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 40,
+        label: 'Last Changed At'
+      }
+    ]
+  }
+  LastChangedAt;
+
+  @UI.hidden: true
+  SalesOrderUUID;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

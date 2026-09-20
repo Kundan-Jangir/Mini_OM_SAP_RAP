@@ -1,0 +1,7 @@
+@EndUserText.label: 'Sales Order Management UI Service'
+define service ZUI_KJOM_SALESORDER {
+  expose ZC_KJOM_SalesOrder     as SalesOrders;
+  expose ZC_KJOM_SalesOrderItem as SalesOrderItems;
+  expose ZI_KJOM_CustomerVH     as CustomerValueHelp;
+  expose ZI_KJOM_ProductVH      as ProductValueHelp;
+}

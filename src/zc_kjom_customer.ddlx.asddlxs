@@ -1,0 +1,405 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Customer',
+    typeNamePlural: 'Customers',
+    title: {
+      type: #STANDARD,
+      value: 'CustomerName'
+    },
+    description: {
+      type: #STANDARD,
+      value: 'Customer'
+    },
+    typeImageUrl: 'sap-icon://customer'
+  },
+  presentationVariant: [
+    {
+      sortOrder: [
+        {
+          by: 'CustomerName',
+          direction: #ASC
+        }
+      ],
+      visualizations: [
+        {
+          type: #AS_LINEITEM
+        }
+      ]
+    }
+  ]
+}
+
+annotate entity ZC_KJOM_Customer with
+{
+  @UI.facet: [
+    {
+      id: 'StatusHeader',
+      purpose: #HEADER,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'CustomerStatus',
+      label: 'Customer Status',
+      position: 10
+    },
+    {
+      id: 'GeneralInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'General',
+      label: 'General Information',
+      position: 10
+    },
+    {
+      id: 'AddressInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Address',
+      label: 'Address',
+      position: 20
+    },
+    {
+      id: 'CommunicationInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Communication',
+      label: 'Communication',
+      position: 30
+    },
+    {
+      id: 'SalesAreaInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'SalesArea',
+      label: 'Sales Area',
+      position: 40
+    },
+    {
+      id: 'CreditInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Credit',
+      label: 'Credit Management',
+      position: 50
+    },
+    {
+      id: 'AdministrationInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Administration',
+      label: 'Administrative Information',
+      position: 60
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      {
+        position: 10,
+        importance: #HIGH
+      }
+    ],
+    identification: [
+      {
+        position: 10
+      }
+    ],
+    selectionField: [
+      {
+        position: 10
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 10
+      }
+    ]
+  }
+  Customer;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 20,
+        importance: #HIGH
+      }
+    ],
+    identification: [
+      {
+        position: 20
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 20
+      }
+    ]
+  }
+  CustomerName;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 30
+      }
+    ]
+  }
+  CustomerGroup;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Address',
+        position: 10
+      }
+    ]
+  }
+  Street;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Address',
+        position: 20
+      }
+    ]
+  }
+  PostalCode;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 30
+      }
+    ],
+    selectionField: [
+      {
+        position: 20
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Address',
+        position: 30
+      }
+    ]
+  }
+  City;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 40
+      }
+    ],
+    selectionField: [
+      {
+        position: 30
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Address',
+        position: 40
+      }
+    ]
+  }
+  Country;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Address',
+        position: 50
+      }
+    ]
+  }
+  Region;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 50
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Communication',
+        position: 10
+      }
+    ]
+  }
+  EmailAddress;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Communication',
+        position: 20
+      }
+    ]
+  }
+  PhoneNumber;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 60
+      }
+    ],
+    selectionField: [
+      {
+        position: 40
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 10
+      }
+    ]
+  }
+  SalesOrganization;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 20
+      }
+    ]
+  }
+  DistributionChannel;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'SalesArea',
+        position: 30
+      }
+    ]
+  }
+  Division;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 70,
+        importance: #HIGH
+      }
+    ],
+    identification: [
+      {
+        position: 70
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Credit',
+        position: 10
+      }
+    ]
+  }
+  CreditLimit;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Credit',
+        position: 20
+      }
+    ]
+  }
+  Currency;
+
+  @UI.dataPoint: {
+    qualifier: 'CustomerStatus',
+    title: 'Status',
+    criticality: 'StatusCriticality'
+  }
+  @UI: {
+    lineItem: [
+      {
+        position: 80,
+        importance: #HIGH,
+        criticality: 'StatusCriticality'
+      }
+    ],
+    identification: [
+      {
+        position: 80,
+        criticality: 'StatusCriticality'
+      }
+    ],
+    selectionField: [
+      {
+        position: 50
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 40
+      }
+    ]
+  }
+  StatusText;
+
+  @UI.hidden: true
+  Status;
+
+  @UI.hidden: true
+  StatusCriticality;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 10
+      }
+    ]
+  }
+  CreatedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 20
+      }
+    ]
+  }
+  CreatedAt;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 30
+      }
+    ]
+  }
+  LastChangedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 40
+      }
+    ]
+  }
+  LastChangedAt;
+
+  @UI.hidden: true
+  CustomerUUID;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

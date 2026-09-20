@@ -1,0 +1,410 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Product',
+    typeNamePlural: 'Products',
+    title: {
+      type: #STANDARD,
+      value: 'ProductName'
+    },
+    description: {
+      type: #STANDARD,
+      value: 'Product'
+    },
+    typeImageUrl: 'sap-icon://product'
+  },
+  presentationVariant: [
+    {
+      sortOrder: [
+        {
+          by: 'ProductName',
+          direction: #ASC
+        }
+      ],
+      visualizations: [
+        {
+          type: #AS_LINEITEM
+        }
+      ]
+    }
+  ]
+}
+
+annotate entity ZC_KJOM_Product with
+{
+  @UI.facet: [
+    {
+      id: 'HeaderStatus',
+      purpose: #HEADER,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'ProductStatus',
+      label: 'Product Status',
+      position: 10
+    },
+    {
+      id: 'HeaderPrice',
+      purpose: #HEADER,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'StandardPrice',
+      label: 'Standard Price',
+      position: 20
+    },
+    {
+      id: 'HeaderStock',
+      purpose: #HEADER,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'AvailableStock',
+      label: 'Available Stock',
+      position: 30
+    },
+    {
+      id: 'GeneralInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'General',
+      label: 'General Information',
+      position: 10
+    },
+    {
+      id: 'PricingInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Pricing',
+      label: 'Pricing and Tax',
+      position: 20
+    },
+    {
+      id: 'InventoryInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Inventory',
+      label: 'Inventory',
+      position: 30
+    },
+    {
+      id: 'AdministrationInformation',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Administration',
+      label: 'Administrative Information',
+      position: 40
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      {
+        position: 10,
+        importance: #HIGH,
+        label: 'Product ID'
+      }
+    ],
+    identification: [
+      {
+        position: 10,
+        label: 'Product ID'
+      }
+    ],
+    selectionField: [
+      {
+        position: 10
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 10,
+        label: 'Product ID'
+      }
+    ]
+  }
+  Product;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 20,
+        importance: #HIGH,
+        label: 'Product Name'
+      }
+    ],
+    identification: [
+      {
+        position: 20,
+        label: 'Product Name'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 20,
+        label: 'Product Name'
+      }
+    ]
+  }
+  ProductName;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 30,
+        label: 'Product Group'
+      }
+    ],
+    selectionField: [
+      {
+        position: 20
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 30,
+        label: 'Product Group'
+      }
+    ]
+  }
+  ProductGroup;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 40,
+        label: 'Base Unit'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 40,
+        label: 'Base Unit'
+      }
+    ]
+  }
+  BaseUnit;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Pricing',
+        position: 10,
+        label: 'Currency'
+      }
+    ]
+  }
+  Currency;
+
+  @UI.dataPoint: {
+    qualifier: 'StandardPrice',
+    title: 'Standard Price'
+  }
+  @UI: {
+    lineItem: [
+      {
+        position: 50,
+        importance: #HIGH,
+        label: 'Standard Price'
+      }
+    ],
+    identification: [
+      {
+        position: 50,
+        label: 'Standard Price'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Pricing',
+        position: 20,
+        label: 'Standard Price'
+      }
+    ]
+  }
+  StandardPrice;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 60,
+        label: 'Tax Percentage'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Pricing',
+        position: 30,
+        label: 'Tax Percentage'
+      }
+    ]
+  }
+  TaxPercentage;
+
+  @UI.dataPoint: {
+    qualifier: 'AvailableStock',
+    title: 'Available Stock',
+    criticality: 'StockCriticality'
+  }
+  @UI: {
+    lineItem: [
+      {
+        position: 70,
+        importance: #HIGH,
+        label: 'Available Stock',
+        criticality: 'StockCriticality'
+      }
+    ],
+    identification: [
+      {
+        position: 70,
+        label: 'Available Stock',
+        criticality: 'StockCriticality'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Inventory',
+        position: 10,
+        label: 'Available Stock'
+      }
+    ]
+  }
+  AvailableStock;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 80,
+        label: 'Reorder Level'
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Inventory',
+        position: 20,
+        label: 'Reorder Level'
+      }
+    ]
+  }
+  ReorderLevel;
+
+  @UI: {
+    lineItem: [
+      {
+        position: 90,
+        label: 'Default Plant'
+      }
+    ],
+    selectionField: [
+      {
+        position: 30
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'Inventory',
+        position: 30,
+        label: 'Default Plant'
+      }
+    ]
+  }
+  DefaultPlant;
+
+  @UI.dataPoint: {
+    qualifier: 'ProductStatus',
+    title: 'Status',
+    criticality: 'StatusCriticality'
+  }
+  @UI: {
+    lineItem: [
+      {
+        position: 100,
+        importance: #HIGH,
+        label: 'Status',
+        criticality: 'StatusCriticality'
+      }
+    ],
+    identification: [
+      {
+        position: 100,
+        label: 'Status',
+        criticality: 'StatusCriticality'
+      }
+    ],
+    selectionField: [
+      {
+        position: 40
+      }
+    ],
+    fieldGroup: [
+      {
+        qualifier: 'General',
+        position: 50,
+        label: 'Status'
+      }
+    ]
+  }
+  StatusText;
+
+  @UI.hidden: true
+  Status;
+
+  @UI.hidden: true
+  StatusCriticality;
+
+  @UI.hidden: true
+  StockCriticality;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 10,
+        label: 'Created By'
+      }
+    ]
+  }
+  CreatedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 20,
+        label: 'Created At'
+      }
+    ]
+  }
+  CreatedAt;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 30,
+        label: 'Last Changed By'
+      }
+    ]
+  }
+  LastChangedBy;
+
+  @UI: {
+    fieldGroup: [
+      {
+        qualifier: 'Administration',
+        position: 40,
+        label: 'Last Changed At'
+      }
+    ]
+  }
+  LastChangedAt;
+
+  @UI.hidden: true
+  ProductUUID;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

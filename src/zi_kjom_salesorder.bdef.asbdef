@@ -1,0 +1,328 @@
+managed implementation in class zbp_i_kjom_salesorder unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_KJOM_SalesOrder alias SalesOrder
+persistent table zkj_om_so_h
+draft table zkj_om_so_h_d
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( none )
+{
+  create;
+  update;
+  delete;
+
+  association _Items
+  {
+    create;
+    with draft;
+  }
+
+  field ( readonly, numbering : managed )
+  SalesOrderUUID;
+
+  field ( readonly )
+  SalesOrder,
+  GrossAmount,
+  DiscountAmount,
+  NetAmount,
+  TaxAmount,
+  TotalAmount,
+  OverallStatus,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt;
+
+  field ( mandatory )
+  SalesOrderType,
+  CustomerUUID,
+  OrderDate,
+  RequestedDeliveryDate;
+
+  determination setInitialOrderData on modify
+  {
+    create;
+  }
+
+  determination deriveCustomerDefaults on modify
+  {
+    field CustomerUUID;
+  }
+
+  determination assignSalesOrderID on modify
+  {
+    create;
+  }
+
+  validation validateItems on save
+  {
+    create;
+    update;
+  }
+
+  validation validateCustomer on save
+  {
+    create;
+    update;
+    field CustomerUUID;
+  }
+
+  validation validateOrderDates on save
+  {
+    create;
+    update;
+    field OrderDate, RequestedDeliveryDate;
+  }
+
+  validation validateOrderType on save
+  {
+    create;
+    update;
+    field SalesOrderType;
+  }
+
+  validation validateCurrency on save
+  {
+    create;
+    update;
+    field TransactionCurrency;
+  }
+
+  side effects
+  {
+    field CustomerUUID affects
+        field SalesOrganization,
+        field DistributionChannel,
+        field Division,
+        field TransactionCurrency;
+
+    entity _Items affects
+        field GrossAmount,
+        field DiscountAmount,
+        field NetAmount,
+        field TaxAmount,
+        field TotalAmount;
+  }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation validateCustomer;
+    validation validateOrderDates;
+    validation validateOrderType;
+    validation validateCurrency;
+    validation validateItems;
+
+    validation SalesOrderItem~validateProduct;
+    validation SalesOrderItem~validateQuantity;
+    validation SalesOrderItem~validateDiscount;
+    validation SalesOrderItem~validateItemCurrency;
+  }
+
+  mapping for zkj_om_so_h
+    {
+      SalesOrderUUID        = sales_order_uuid;
+      SalesOrder            = sales_order;
+      SalesOrderType        = sales_order_type;
+      CustomerUUID          = customer_uuid;
+      CustomerReference     = customer_reference;
+      SalesOrganization     = sales_organization;
+      DistributionChannel   = distribution_channel;
+      Division              = division;
+      OrderDate             = order_date;
+      RequestedDeliveryDate = requested_delivery_date;
+      TransactionCurrency   = transaction_currency;
+      GrossAmount           = gross_amount;
+      DiscountAmount        = discount_amount;
+      NetAmount             = net_amount;
+      TaxAmount             = tax_amount;
+      TotalAmount           = total_amount;
+      OverallStatus         = overall_status;
+      RejectionReason       = rejection_reason;
+      CreatedBy             = created_by;
+      CreatedAt             = created_at;
+      LastChangedBy         = last_changed_by;
+      LastChangedAt         = last_changed_at;
+      LocalLastChangedBy    = local_last_changed_by;
+      LocalLastChangedAt    = local_last_changed_at;
+    }
+}
+
+define behavior for ZI_KJOM_SalesOrderItem alias SalesOrderItem
+persistent table zkj_om_so_i
+draft table zkj_om_so_i_d
+lock dependent by _SalesOrder
+authorization dependent by _SalesOrder
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  association _SalesOrder
+  {
+    with draft;
+  }
+
+  field ( readonly, numbering : managed )
+  SalesOrderItemUUID;
+
+  field ( readonly )
+  SalesOrderUUID,
+  SalesOrder,
+  SalesOrderItem,
+  ProductDescription,
+  OrderQuantityUnit,
+  TransactionCurrency,
+  UnitPrice,
+  GrossAmount,
+  DiscountAmount,
+  NetAmount,
+  TaxPercentage,
+  TaxAmount,
+  TotalAmount,
+  Plant,
+  ItemStatus,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt;
+
+  field ( mandatory )
+  ProductUUID,
+  OrderQuantity;
+
+  determination setInitialItemData on modify
+  {
+    create;
+  }
+
+  determination deriveProductDefaults on modify
+  {
+    field ProductUUID;
+  }
+
+  determination calculateItemAmounts on modify
+  {
+    create;
+    field OrderQuantity,
+    UnitPrice,
+    DiscountPercentage,
+    TaxPercentage;
+  }
+
+  determination assignItemNumber on modify
+  {
+    create;
+  }
+
+  determination calculateHeaderTotals on modify
+  {
+    create;
+    delete;
+    field GrossAmount,
+    DiscountAmount,
+    NetAmount,
+    TaxAmount,
+    TotalAmount;
+  }
+
+  validation validateProduct on save
+  {
+    create;
+    update;
+    field ProductUUID;
+  }
+
+  validation validateQuantity on save
+  {
+    create;
+    update;
+    field OrderQuantity;
+  }
+
+  validation validateDiscount on save
+  {
+    create;
+    update;
+    field DiscountPercentage;
+  }
+
+  validation validateItemCurrency on save
+  {
+    create;
+    update;
+    field ProductUUID, TransactionCurrency;
+  }
+
+  side effects
+  {
+    field ProductUUID affects
+        field ProductDescription,
+        field OrderQuantityUnit,
+        field TransactionCurrency,
+        field UnitPrice,
+        field TaxPercentage,
+        field Plant,
+        field GrossAmount,
+        field DiscountAmount,
+        field NetAmount,
+        field TaxAmount,
+        field TotalAmount,
+        entity _SalesOrder;
+
+    field OrderQuantity affects
+        field GrossAmount,
+        field DiscountAmount,
+        field NetAmount,
+        field TaxAmount,
+        field TotalAmount,
+        entity _SalesOrder;
+
+    field DiscountPercentage affects
+        field DiscountAmount,
+        field NetAmount,
+        field TaxAmount,
+        field TotalAmount,
+        entity _SalesOrder;
+  }
+
+  mapping for zkj_om_so_i
+    {
+      SalesOrderItemUUID  = sales_order_item_uuid;
+      SalesOrderUUID      = parent_uuid;
+      SalesOrder          = sales_order;
+      SalesOrderItem      = sales_order_item;
+      ProductUUID         = product_uuid;
+      ProductDescription  = product_description;
+      OrderQuantity       = order_quantity;
+      OrderQuantityUnit   = order_quantity_unit;
+      TransactionCurrency = transaction_currency;
+      UnitPrice           = unit_price;
+      DiscountPercentage  = discount_percentage;
+      GrossAmount         = gross_amount;
+      DiscountAmount      = discount_amount;
+      NetAmount           = net_amount;
+      TaxPercentage       = tax_percentage;
+      TaxAmount           = tax_amount;
+      TotalAmount         = total_amount;
+      Plant               = plant;
+      ItemStatus          = item_status;
+      CreatedBy           = created_by;
+      CreatedAt           = created_at;
+      LastChangedBy       = last_changed_by;
+      LastChangedAt       = last_changed_at;
+      LocalLastChangedBy  = local_last_changed_by;
+      LocalLastChangedAt  = local_last_changed_at;
+    }
+}

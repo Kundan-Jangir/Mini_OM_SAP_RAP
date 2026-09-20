@@ -1,0 +1,5 @@
+CLASS zbp_i_kjom_product DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_kjom_product.
+ENDCLASS.
+
+CLASS zbp_i_kjom_product IMPLEMENTATION.
+ENDCLASS.

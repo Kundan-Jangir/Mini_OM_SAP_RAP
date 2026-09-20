@@ -1,0 +1,144 @@
+managed implementation in class zbp_i_kjom_product unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_KJOM_Product alias Product
+persistent table zkj_om_product
+draft table zkj_om_prod_d
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( global )
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed )
+    ProductUUID;
+
+  field ( readonly : update )
+    Product;
+
+  field ( readonly )
+    Status,
+    StatusText,
+    StatusCriticality,
+    StockCriticality,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    LocalLastChangedBy,
+    LocalLastChangedAt;
+
+  field ( mandatory : create )
+    Product;
+
+  field ( mandatory )
+    ProductName,
+    BaseUnit,
+    Currency,
+    DefaultPlant;
+
+  determination setInitialStatus on modify
+  {
+    create;
+  }
+
+  determination normalizeProductData on modify
+  {
+    field Product, ProductName;
+  }
+
+  validation validateProduct on save
+  {
+    create;
+    update;
+    field Product;
+  }
+
+  validation validateProductName on save
+  {
+    create;
+    update;
+    field ProductName;
+  }
+
+  validation validatePrice on save
+  {
+    create;
+    update;
+    field StandardPrice, Currency;
+  }
+
+  validation validateStock on save
+  {
+    create;
+    update;
+    field AvailableStock, ReorderLevel;
+  }
+
+  validation validateTaxPercentage on save
+  {
+    create;
+    update;
+    field TaxPercentage;
+  }
+
+  validation validateBaseUnit on save
+  {
+    create;
+    update;
+    field BaseUnit;
+  }
+
+  validation validatePlant on save
+  {
+    create;
+    update;
+    field DefaultPlant;
+  }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation validateProduct;
+    validation validateProductName;
+    validation validatePrice;
+    validation validateStock;
+    validation validateTaxPercentage;
+    validation validateBaseUnit;
+    validation validatePlant;
+  }
+
+  mapping for zkj_om_product
+  {
+    ProductUUID        = product_uuid;
+    Product            = product_id;
+    ProductName        = product_name;
+    ProductGroup       = product_group;
+    BaseUnit           = base_unit;
+
+    Currency           = currency_code;
+    StandardPrice      = standard_price;
+    TaxPercentage      = tax_percentage;
+
+    AvailableStock     = available_stock;
+    ReorderLevel       = reorder_level;
+    DefaultPlant       = default_plant;
+
+    Status             = status;
+
+    CreatedBy          = created_by;
+    CreatedAt          = created_at;
+    LastChangedBy      = last_changed_by;
+    LastChangedAt      = last_changed_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

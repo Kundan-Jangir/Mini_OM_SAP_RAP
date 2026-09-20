@@ -1,0 +1,5 @@
+CLASS zbp_i_kjom_salesorder DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_kjom_salesorder.
+ENDCLASS.
+
+CLASS zbp_i_kjom_salesorder IMPLEMENTATION.
+ENDCLASS.

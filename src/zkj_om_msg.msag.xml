@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZKJ_OM_MSG</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Message class for my mini project</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Required information is missing</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Customer ID is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Customer name is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>101</MSGNR>
+     <TEXT>Customer &amp;1 does not exist</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>102</MSGNR>
+     <TEXT>Customer &amp;1 is inactive</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>104</MSGNR>
+     <TEXT>Credit limit cannot be negative</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>105</MSGNR>
+     <TEXT>Currency is required when credit limit is maintained</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>106</MSGNR>
+     <TEXT>Customer ID &amp;1 already exists</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>107</MSGNR>
+     <TEXT>Email address &amp;1 is invalid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>108</MSGNR>
+     <TEXT>Country/Region is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>109</MSGNR>
+     <TEXT>Sales organization is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>110</MSGNR>
+     <TEXT>Distribution channel is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>111</MSGNR>
+     <TEXT>Division is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>201</MSGNR>
+     <TEXT>Product ID is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>202</MSGNR>
+     <TEXT>Product ID &amp;1 already exists</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>203</MSGNR>
+     <TEXT>Product name is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>204</MSGNR>
+     <TEXT>Standard price cannot be negative</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>205</MSGNR>
+     <TEXT>Currency is required when standard price is maintained</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>206</MSGNR>
+     <TEXT>Base unit is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>207</MSGNR>
+     <TEXT>Available stock cannot be negative</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>208</MSGNR>
+     <TEXT>Reorder level cannot be negative</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>209</MSGNR>
+     <TEXT>Tax percentage must be between 0 and 100</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>210</MSGNR>
+     <TEXT>Default plant is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>211</MSGNR>
+     <TEXT>Product &amp;1 is inactive</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>212</MSGNR>
+     <TEXT>Available stock is below the reorder level</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>301</MSGNR>
+     <TEXT>Customer is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>302</MSGNR>
+     <TEXT>Customer &amp;1 does not exist or is inactive</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>303</MSGNR>
+     <TEXT>Order date is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>304</MSGNR>
+     <TEXT>Requested delivery date cannot precede order date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>305</MSGNR>
+     <TEXT>Sales order must contain at least one item</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>306</MSGNR>
+     <TEXT>Product is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>307</MSGNR>
+     <TEXT>Product &amp;1 does not exist or is inactive</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>308</MSGNR>
+     <TEXT>Order quantity must be greater than zero</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>309</MSGNR>
+     <TEXT>Discount percentage must be between 0 and 100</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>310</MSGNR>
+     <TEXT>Sales order number assignment failed</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>311</MSGNR>
+     <TEXT>Sales order item number assignment failed</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>312</MSGNR>
+     <TEXT>Item currency &amp;1 does not match Sales Order currency &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>313</MSGNR>
+     <TEXT>Ordered quantity &amp;1 exceeds available stock &amp;2 for product &amp;3</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>314</MSGNR>
+     <TEXT>Sales order type is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>315</MSGNR>
+     <TEXT>Transaction currency is required</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKJ_OM_MSG</ARBGB>
+     <MSGNR>316</MSGNR>
+     <TEXT>Product &amp;1 has no available stock</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>
